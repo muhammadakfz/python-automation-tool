@@ -2,8 +2,8 @@
 
 A production-style Python CLI project for repetitive file and CSV workflows.
 
-[![CI](https://github.com/genius/python-automation-tool/actions/workflows/ci.yml/badge.svg)](https://github.com/genius/python-automation-tool/actions/workflows/ci.yml)
-[![Release](https://github.com/genius/python-automation-tool/actions/workflows/release.yml/badge.svg)](https://github.com/genius/python-automation-tool/actions/workflows/release.yml)
+[![CI](https://github.com/genius/python-automation-tool/actions/workflows/ci.yml/badge.svg)](https://github.com/muhammadakfz/python-automation-tool/actions/workflows/ci.yml)
+[![Release](https://github.com/genius/python-automation-tool/actions/workflows/release.yml/badge.svg)](https://github.com/muhammadakfz/python-automation-tool/actions/workflows/release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 This repository is structured to present well as a portfolio project:
