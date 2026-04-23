@@ -9,7 +9,7 @@ description = "Production-style CLI to automate repetitive file and CSV workflow
 readme = "README.md"
 requires-python = ">=3.11"
 authors = [
-  { name = "Genius" }
+  { name = "Muhammad Akhyar Fahrurrozi" }
 ]
 license = { text = "MIT" }
 keywords = ["automation", "cli", "files", "csv", "productivity"]
@@ -31,9 +31,9 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/genius/python-automation-tool"
-Repository = "https://github.com/genius/python-automation-tool"
-Issues = "https://github.com/genius/python-automation-tool/issues"
+Homepage = "https://github.com/muhammadakfz/python-automation-tool"
+Repository = "https://github.com/muhammadakfz/python-automation-tool"
+Issues = "https://github.com/muhammadakfz/python-automation-tool/issues"
 
 [project.scripts]
 python-automation-tool = "python_automation_tool.cli:main"
