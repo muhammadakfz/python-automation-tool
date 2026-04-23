@@ -12,7 +12,11 @@ from python_automation_tool.batch_renamer import build_rename_plan, execute_rena
 from python_automation_tool.csv_processor import process_csv_file
 from python_automation_tool.file_operations import organize_files
 from python_automation_tool.filters import FileFilterCriteria
-from python_automation_tool.history import load_last_operation, save_last_operation, undo_last_operation
+from python_automation_tool.history import (
+    load_last_operation,
+    save_last_operation,
+    undo_last_operation,
+)
 from python_automation_tool.logging_config import configure_logging
 from python_automation_tool.models import ActionRecord, RenamePlanItem
 from python_automation_tool.reporting import generate_action_report, summarize_statuses

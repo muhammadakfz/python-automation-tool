@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from collections import defaultdict
 import logging
+from collections import defaultdict
 from pathlib import Path
 from uuid import uuid4
 
@@ -54,7 +54,10 @@ def build_rename_plan(
         raise ValueError("Source directory contains no files to rename.")
 
     selected_files: list[Path] = []
-    for file_path in sorted(all_files, key=lambda item: (str(item.parent).lower(), item.name.lower())):
+    for file_path in sorted(
+        all_files,
+        key=lambda item: (str(item.parent).lower(), item.name.lower()),
+    ):
         try:
             if matches_filters(file_path, filters):
                 selected_files.append(file_path)
