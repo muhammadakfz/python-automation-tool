@@ -2,15 +2,15 @@
 
 A production-style Python CLI project for repetitive file and CSV workflows.
 
-[![CI](https://github.com/genius/python-automation-tool/actions/workflows/ci.yml/badge.svg)](https://github.com/muhammadakfz/python-automation-tool/actions/workflows/ci.yml)
-[![Release](https://github.com/genius/python-automation-tool/actions/workflows/release.yml/badge.svg)](https://github.com/muhammadakfz/python-automation-tool/actions/workflows/release.yml)
+[![CI](https://github.com/muhammadakfz/python-automation-tool/actions/workflows/ci.yml/badge.svg)](https://github.com/muhammadakfz/python-automation-tool/actions/workflows/ci.yml)
+[![Release](https://github.com/muhammadakfz/python-automation-tool/actions/workflows/release.yml/badge.svg)](https://github.com/muhammadakfz/python-automation-tool/actions/workflows/release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-This repository is structured to present well as a portfolio project:
-- clean `src/` layout and modular CLI architecture
-- lint, unit tests, and end-to-end CLI integration tests
-- build verification for both sdist and wheel
-- tag-driven GitHub Actions release workflow for PyPI publishing
+This project presents a practical automation CLI the way a hiring manager or reviewer would expect to see it shipped:
+- modular `src/` package layout instead of a single script
+- safe file operations with dry-run support and undo history
+- automated quality gates with Ruff, pytest, and distribution validation
+- GitHub Actions release automation ready for PyPI trusted publishing
 
 This tool is designed for local automation work such as:
 - organizing mixed folders by file type
@@ -40,10 +40,17 @@ This tool is designed for local automation work such as:
 
 ## Portfolio Highlights
 
+- `Real product behavior`: organize, rename, CSV cleanup, reporting, and undo are exposed through a clean CLI instead of ad hoc scripts
 - `CI/CD`: GitHub Actions validates lint, tests, and packaging on every push and pull request
 - `Release discipline`: versioned releases are tied to Git tags and validated before publishing
 - `Operational safety`: destructive workflows support dry runs, duplicate handling, reports, and undo
 - `Test depth`: the suite covers both module-level logic and real CLI execution paths
+
+## Why This Project Stands Out
+
+- It solves a concrete problem space that is common in operations, admin, and analyst workflows
+- It demonstrates both application code and software engineering process: testing, packaging, CI, and release automation
+- It is small enough to review quickly, but deep enough to show judgment around safety, edge cases, and maintainability
 
 ## Project Docs
 
@@ -243,6 +250,21 @@ Export the latest saved operation history to CSV.
 python-automation-tool report --output ./reports/latest_history_report.csv
 ```
 
+## Example End-To-End Workflow
+
+```bash
+python-automation-tool organize --source ./data/inbox --dry-run
+python-automation-tool organize --source ./data/inbox --report-path ./reports/organize.csv
+python-automation-tool rename --source ./data/inbox/documents --prefix archive --apply
+python-automation-tool undo
+```
+
+That sequence demonstrates the main design goals of the tool:
+- preview before destructive changes
+- generate traceable reports
+- apply deterministic batch operations
+- recover from the most recent organize or rename run
+
 ## Logging
 
 Verbose console logs:
@@ -324,9 +346,30 @@ make check
 - `.github/workflows/release.yml`
   Runs on version tags, rebuilds and validates the package, publishes to PyPI via trusted publishing, and creates a GitHub Release
 
-Before enabling PyPI publishing, configure a `pypi` environment in GitHub and connect it to your PyPI trusted publisher settings.
+## PyPI Trusted Publishing Setup
 
-If your GitHub repository slug is different from `genius/python-automation-tool`, update the repository URLs in `pyproject.toml` and the badges above.
+The release workflow is already configured for PyPI trusted publishing. To activate it, configure the matching publisher on PyPI using these exact values:
+
+- `Owner`: `muhammadakfz`
+- `Repository name`: `python-automation-tool`
+- `Workflow name`: `release.yml`
+- `Environment name`: `pypi`
+
+GitHub-side requirements already present in this repo:
+- job-level `id-token: write` permission in `.github/workflows/release.yml`
+- `environment: pypi` on the publish job
+- `pypa/gh-action-pypi-publish@release/v1` for OIDC-based publishing
+
+Manual PyPI setup still required:
+1. Create the `python-automation-tool` project on PyPI, or add a trusted publisher to the existing project.
+2. In PyPI, open the project settings and add a GitHub Actions trusted publisher.
+3. Enter the exact repository and workflow values listed above.
+4. In GitHub, create or review the `pypi` environment under repository settings.
+
+This setup follows the official PyPI trusted publishing documentation:
+- https://docs.pypi.org/trusted-publishers/
+- https://docs.pypi.org/trusted-publishers/adding-a-publisher/
+- https://docs.pypi.org/trusted-publishers/using-a-publisher/
 
 ## Practical Portfolio Workflow
 
