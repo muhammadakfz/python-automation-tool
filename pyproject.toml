@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "python-automation-tool"
+dynamic = ["version"]
+description = "Production-style CLI to automate repetitive file and CSV workflows"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+  { name = "Genius" }
+]
+license = { text = "MIT" }
+keywords = ["automation", "cli", "files", "csv", "productivity"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "License :: OSI Approved :: MIT License",
+  "Environment :: Console",
+  "Topic :: Utilities"
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "build>=1.2.2",
+  "pytest>=8.2.0",
+  "ruff>=0.11.0",
+  "twine>=6.1.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/genius/python-automation-tool"
+Repository = "https://github.com/genius/python-automation-tool"
+Issues = "https://github.com/genius/python-automation-tool/issues"
+
+[project.scripts]
+python-automation-tool = "python_automation_tool.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.dynamic]
+version = { attr = "python_automation_tool.__version__" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
